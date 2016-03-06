@@ -23,6 +23,21 @@ namespace Fifteen_Game
         public MainWindow()
         {
             InitializeComponent();
+            Controller controller = new Controller(this);
+        }
+        //delegate for events handling
+        private EventHandler numberClick;
+
+        //event number
+        public event EventHandler NumberClick
+        {
+            add { numberClick += value; }
+            remove { numberClick -= value; }
+        }
+
+        private void NumClick(object sender, RoutedEventArgs e)
+        {
+            numberClick.Invoke(sender, e);
         }
     }
 }
