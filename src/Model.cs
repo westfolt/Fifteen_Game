@@ -10,10 +10,17 @@ namespace Fifteen_Game
     class Model
     {
         private int numberOfMoves;
+        private Random rand;
 
         public Model()
         {
+            rand = new Random(DateTime.Now.Millisecond);
             NewGame();
+        }
+
+        public int NumberOfMoves
+        {
+            get { return numberOfMoves; }
         }
 
         public void NewGame()
@@ -39,6 +46,19 @@ namespace Fifteen_Game
                 return true;
 
             return false;
+        }
+        public string[] Shuffle()
+        {
+            string[] result = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", " " };
+            for (int i = 0; i < result.Length; i++)
+            {
+                int j = rand.Next(15);
+                string temp = result[j];
+                result[j] = result[i];
+                result[i] = temp;
+            }
+
+            return result;
         }
     }
 }

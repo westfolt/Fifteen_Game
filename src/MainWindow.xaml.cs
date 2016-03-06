@@ -27,17 +27,39 @@ namespace Fifteen_Game
         }
         //delegate for events handling
         private EventHandler numberClick;
+        private EventHandler newGameClick;
 
-        //event number
+        //events
         public event EventHandler NumberClick
         {
             add { numberClick += value; }
             remove { numberClick -= value; }
         }
+        public event EventHandler NewGameClick
+        {
+            add { newGameClick += value; }
+            remove { newGameClick -= value; }
+        }
 
         private void NumClick(object sender, RoutedEventArgs e)
         {
             numberClick.Invoke(sender, e);
+        }
+
+        private void NewGame_OnClick(object sender, RoutedEventArgs e)
+        {
+            newGameClick.Invoke(sender,e);
+        }
+
+        private void About_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(
+                "Your objective is to place the tiles in oerder by making " +
+                "sliding moves that use the empty space");
+        }
+        private void Exit_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
